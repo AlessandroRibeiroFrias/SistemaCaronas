@@ -26,7 +26,7 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::get('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@show');
     Route::post('', 'App\Http\Controllers\ControllerCaroneiro@store');
     Route::put('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
-    Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
+    Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@destroy');
 });
 
 Route::group(['prefix' => 'endereco'], function () {
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'endereco'], function () {
     Route::get('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@show');
     Route::post('', 'App\Http\Controllers\ControllerEndereco@store');
     Route::put('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
-    Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
+    Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@destroy');
 });
 
 Route::group(['prefix' => 'motorista'], function () {
@@ -42,5 +42,5 @@ Route::group(['prefix' => 'motorista'], function () {
     Route::get('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@show');
     Route::post('', 'App\Http\Controllers\ControllerMotorista@store');
     Route::put('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update');
-    Route::delete('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update');
+    Route::delete('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@destroy');
 });

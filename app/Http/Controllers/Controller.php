@@ -29,12 +29,24 @@ class Controller extends BaseController
 	public function show($id)
     {
         $r = $this->service->show($id);
-        return Response::json($r);
+        return ResponseDefault::json($r);
 	}
 	
 	public function update(Request $request, $id)
     {
         $r = $this->service->update($request, $id);
         return ResponseDefault::json($r);
-    }
+	}
+	
+	public function destroy($id)
+    {
+        $r = $this->service->destroy($id);
+        return ResponseDefault::json($r);
+	}
+	
+	public function store(Request $request)
+    {
+        $r = $this->service->store($request);
+        return ResponseDefault::json($r);
+	}
 }
