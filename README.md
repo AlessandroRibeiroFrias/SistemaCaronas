@@ -2,7 +2,10 @@
 ### Instalação
 - Clonar o projeto
 - Realizar a instalaçao do [Composer](https://getcomposer.org/ "Composer")
-- - teste
+- Criar a base de dados `sistemacaronas`
+- Executar os comandos:
+- - `php artisan migrate:fresh`
+- - `php artisan serve`
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
