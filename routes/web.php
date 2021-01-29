@@ -24,5 +24,5 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::get('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@show');
     Route::post('', 'App\Http\Controllers\ControllerCaroneiro@store');
     Route::put('', 'App\Http\Controllers\ControllerCaroneiro@update');
-    Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
+    Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@destroy');
 });
