@@ -1,0 +1,63 @@
+CREATE TABLE caroneiro(
+	id_caroneiro INT PRIMARY KEY AUTO_INCREMENT,
+    nm_caroneiro VARCHAR(255)
+);
+
+CREATE TABLE endereco(
+	id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+    nm_municipio VARCHAR(255),
+    nm_uf VARCHAR(100),
+    cd_longitude VARCHAR(50),
+    cd_latitude VARCHAR(50)
+);
+
+CREATE TABLE status(
+    id_status INT PRIMARY KEY AUTO_INCREMENT,
+    nm_status VARCHAR(100)
+);
+
+CREATE TABLE motorista(
+    id_motorista INT PRIMARY KEY AUTO_INCREMENT,
+    nm_motorista VARCHAR(100),
+    nm_carro VARCHAR(100)
+);
+
+CREATE TABLE carona_caroneiro(
+    id_carona_caroneiro INT PRIMARY KEY AUTO_INCREMENT,
+    caroneiro_id INT,
+    endereco_origem_id INT,
+    endereco_destino_id INT,
+    status_id INT,
+
+    FOREIGN KEY (caroneiro_id) REFERENCES caroneiro(id_caroneiro),
+    FOREIGN KEY (endereco_origem_id) REFERENCES endereco(id_endereco),
+    FOREIGN KEY (endereco_destino_id) REFERENCES endereco(id_endereco),
+    FOREIGN KEY (status_id) REFERENCES status(id_status)
+
+);
+
+CREATE TABLE carona_motorista(
+    id_carona_motorista INT PRIMARY KEY AUTO_INCREMENT,
+    motorista_id INT,
+    endereco_origem_id INT,
+    endereco_destino_id INT,
+    status_id INT,
+    qtd_max_passageiro INT,
+    raio DECIMAL(10,2),
+
+    FOREIGN KEY (motorista_id) REFERENCES motorista(id_motorista),
+    FOREIGN KEY (endereco_origem_id) REFERENCES endereco(id_endereco),
+    FOREIGN KEY (endereco_destino_id) REFERENCES endereco(id_endereco),
+    FOREIGN KEY (status_id) REFERENCES status(id_status)
+
+);
+
+CREATE TABLE viagem(
+    id_viagem INT PRIMARY KEY AUTO_INCREMENT,
+    caroneiro_id INT,
+    carona_motorista_id INT,
+
+    FOREIGN KEY (caroneiro_id) REFERENCES caroneiro(id_caroneiro),
+    FOREIGN KEY (carona_motorista_id) REFERENCES carona_motorista(id_carona_motorista)
+
+);

@@ -9,7 +9,7 @@ class CaroneiroRepository {
        return Caroneiro::all();
     }
 
-    public function show($id_caroneiro){
-        return Caroneiro::find($id_caroneiro);
-     }
+   public function show($id_caroneiro){
+      return Caroneiro::find($id_caroneiro);
+   }
 }
