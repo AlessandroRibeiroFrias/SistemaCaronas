@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Services\CaroneiroService;
+
 use Illuminate\Http\Request;
+use App\Services\CaroneiroService;
 use Response;
 
 class ControllerCaroneiro extends Controller
