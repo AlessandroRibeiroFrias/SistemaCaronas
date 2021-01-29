@@ -28,3 +28,11 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::put('', 'App\Http\Controllers\ControllerCaroneiro@update');
     Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
 });
+
+Route::group(['prefix' => 'endereco'], function () {
+    Route::get('', 'App\Http\Controllers\ControllerEndereco@index');
+    Route::get('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@show');
+    Route::post('', 'App\Http\Controllers\ControllerEndereco@store');
+    Route::put('', 'App\Http\Controllers\ControllerEndereco@update');
+    Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
+});

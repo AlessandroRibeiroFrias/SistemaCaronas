@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\DB;
 
 class EnderecoRepository {
 
-    public function getEndereco(){
-       return DB::table('endereco')->where('id_endereco', 4932)->get();
+    public function index(){
+        return Endereco::all();
+     }
+ 
+    public function show($id_endereco){
+       return Endereco::find($id_endereco);
     }
 }
