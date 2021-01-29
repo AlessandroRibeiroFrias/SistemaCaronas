@@ -25,7 +25,7 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::get('', 'App\Http\Controllers\ControllerCaroneiro@index');
     Route::get('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@show');
     Route::post('', 'App\Http\Controllers\ControllerCaroneiro@store');
-    Route::put('', 'App\Http\Controllers\ControllerCaroneiro@update');
+    Route::put('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
     Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
 });
 
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'endereco'], function () {
     Route::get('', 'App\Http\Controllers\ControllerEndereco@index');
     Route::get('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@show');
     Route::post('', 'App\Http\Controllers\ControllerEndereco@store');
-    Route::put('', 'App\Http\Controllers\ControllerEndereco@update');
+    Route::put('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
     Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
 });
 
@@ -41,6 +41,6 @@ Route::group(['prefix' => 'motorista'], function () {
     Route::get('', 'App\Http\Controllers\ControllerMotorista@index');
     Route::get('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@show');
     Route::post('', 'App\Http\Controllers\ControllerMotorista@store');
-    Route::put('', 'App\Http\Controllers\ControllerMotorista@update');
+    Route::put('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update');
     Route::delete('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update');
 });
