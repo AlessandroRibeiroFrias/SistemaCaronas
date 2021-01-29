@@ -2,15 +2,9 @@
 
 use App\Repositories\EnderecoRepository;
 
-class EnderecoService {
+class EnderecoService extends Service {
 
-    private $repository;
-
-    public function __construct() {
-		$this->repository = new EnderecoRepository();
-    }
-
-    public function getEndereco(){
-       return $this->repository->getEndereco();
-    }
+  public function __construct(EnderecoRepository $r) {
+		parent::__construct($r);
+	}
 }
