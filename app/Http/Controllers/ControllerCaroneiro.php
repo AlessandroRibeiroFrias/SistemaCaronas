@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Services\CaroneiroService;
 use Illuminate\Http\Request;
+use Response;
 
 class ControllerCaroneiro extends Controller
 {
+    private $service;
+
+    public function __construct() {
+		$this->service = new CaroneiroService();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class ControllerCaroneiro extends Controller
      */
     public function index()
     {
-        //
+        $r = $this->service->index();
+        return Response::json($r);
     }
 
     /**
@@ -43,9 +51,10 @@ class ControllerCaroneiro extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_caroneiro)
     {
-        //
+        $r = $this->service->show($id_caroneiro);
+        return Response::json($r);
     }
 
     /**

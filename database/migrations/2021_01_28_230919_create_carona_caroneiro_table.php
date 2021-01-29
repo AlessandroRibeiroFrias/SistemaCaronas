@@ -16,20 +16,26 @@ class CreateCaronaCaroneiroTable extends Migration
         Schema::create('carona_caroneiro', function (Blueprint $table) {
             $table->bigIncrements('id_carona_caroneiro');
             
-            $table->unsignedBigInteger('endereco_destino_id')->unsigned();
-            $table->foreign('endereco_destino_id')->references('id_endereco')->on('endereco');
-           
             $table->unsignedBigInteger('caroneiro_id')->unsigned();
             $table->foreign('caroneiro_id')->references('id_caroneiro')->on('caroneiro');
-            
+
             $table->unsignedBigInteger('endereco_origem_id')->unsigned();
             $table->foreign('endereco_origem_id')->references('id_endereco')->on('endereco');
+
+            $table->unsignedBigInteger('endereco_destino_id')->unsigned();
+            $table->foreign('endereco_destino_id')->references('id_endereco')->on('endereco');
 
             $table->unsignedBigInteger('status_id')->unsigned();
             $table->foreign('status_id')->references('id_status')->on('status');
 
             $table->timestamps();
         });
+
+        $dados = array(
+            ['caroneiro_id' => 1, 'endereco_origem_id' => 4932, 'endereco_destino_id' => 2792, 'status_id' => 1]
+        );
+
+        DB::table('carona_caroneiro')->insert($dados);
     }
 
     /**

@@ -18,6 +18,14 @@ class CreateCaroneiroTable extends Migration
             $table->string('nm_caroneiro');
             $table->timestamps();
         });
+
+        $dados = array(
+            ['nm_caroneiro' => 'José Francisco'],
+            ['nm_caroneiro' => 'Mario Ricardo'],
+            ['nm_caroneiro' => 'Maria Elena']
+        );
+
+        DB::table('caroneiro')->insert($dados);
     }
 
     /**
