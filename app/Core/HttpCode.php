@@ -16,6 +16,30 @@ class HttpCode {
 	    ];
 
 	  	return $dic[$code];
+	}
+	
+	public static function get_message_retorno($code)
+    {
+        $dic = [
+	        "200" => "Dados encontrado com sucesso.",
+	        "404" => "Dados não encontrado",
+	        "422" => "Dados não encontrado",
+	        "500" => "Erro interno"
+	    ];
+
+	  	return $dic[$code];
+	}
+	
+	public static function get_valid_retorno($code)
+    {
+        $dic = [
+	        "200" => true,
+	        "404" => false,
+	        "422" => false,
+	        "500" => false
+	    ];
+
+	  	return $dic[$code];
     }
 
 }

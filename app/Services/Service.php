@@ -1,6 +1,7 @@
 <?php namespace App\Services;
 
 use Illuminate\Support\Facades\Validator;
+use App\Core\ResponseDefault;
 
 class Service{
 
@@ -19,20 +20,11 @@ class Service{
 
         if(!$retorno)
         {
-            return [
-                "data" => [],
-                "message" => "Dados não encontrados.",
-                "valid" => false,
-                "status_code" => 404
-            ];
+            return ResponseDefault::retorno([], 404);
+
         }
 
-        return [
-            "data" => $retorno,
-            "message" => "Dados encontrados.",
-            "valid" => true,
-            "status_code" => 200
-        ];
+        return ResponseDefault::retorno($retorno, 200);
     }
 
     public function show($id)
@@ -40,20 +32,12 @@ class Service{
         $retorno =  $this->repository->show($id);
         if(!$retorno)
         {
-            return [
-                "data" => [],
-                "message" => "Dado não encontrado.",
-                "valid" => false,
-                "status_code" => 404
-            ];
+
+            return ResponseDefault::retorno([], 404);
+
         }
 
-        return [
-            "data" => $retorno,
-            "message" => "Dado encontrado.",
-            "valid" => true,
-            "status_code" => 200
-        ];
+        return ResponseDefault::retorno($retorno, 200);
     }
 
     public function update($dados, $id)
@@ -62,34 +46,21 @@ class Service{
         
         if(!$dadosChange)
         {
-            return [
-                "data" => [],
-                "message" => "Dado não encontrado",
-                "valid" => false,
-                "status_code" => 404
-            ];
+
+            return ResponseDefault::retorno([], 404);
+
         }
         
         $validator = Validator::make($dados->all(), $this->repository->getRules(), $this->repository->getMessage());
 
         if ($validator->fails()) 
         {
-            return [
-                "data" => [],
-                "message" => $validator->messages(),
-                "valid" => true,
-                "status_code" => 422
-            ];
+            return ResponseDefault::retorno([], 422);
         }
 
         $this->repository->update($dadosChange, $dados);
 
-        return [
-            "data" => [],
-            "message" => "Dado atualizado com sucesso.",
-            "valid" => true,
-            "status_code" => 200
-         ];
+        return ResponseDefault::retorno([], 200);
 
     }
 
@@ -99,22 +70,12 @@ class Service{
         
         if(!$dadosDestroy)
         {
-            return [
-                "data" => [],
-                "message" => "Dados não encontrado",
-                "valid" => false,
-                "status_code" => 404
-            ];
+            return ResponseDefault::retorno([], 404);
         }
 
         $this->repository->destroy($dadosDestroy, $id);
 
-        return [
-            "data" => [],
-            "message" => "Dado removido com sucesso.",
-            "valid" => true,
-            "status_code" => 200
-         ];
+        return ResponseDefault::retorno([], 200);
 
     }
 
@@ -124,22 +85,14 @@ class Service{
 
         if ($validator->fails()) 
         {
-            return [
-                "data" => [],
-                "message" => $validator->messages(),
-                "valid" => true,
-                "status_code" => 422
-            ];
+
+            return ResponseDefault::retorno([], 422);
+
         }
 
         $this->repository->store($dados);
 
-        return [
-            "data" => [],
-            "message" => "Dados cadastrados com sucesso.",
-            "valid" => true,
-            "status_code" => 200
-         ];
+        return ResponseDefault::retorno([], 200);
 
     }
 

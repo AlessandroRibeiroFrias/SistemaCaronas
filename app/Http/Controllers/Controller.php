@@ -23,7 +23,7 @@ class Controller extends BaseController
 	public function index()
     {
         $r = $this->service->index();
-        return Response::json($r);
+        return ResponseDefault::json($r);
 	}
 	
 	public function show($id)
