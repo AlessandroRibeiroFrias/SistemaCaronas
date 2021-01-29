@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\MotoristaService;
+use Response;
 
 class ControllerMotorista extends Controller
 {

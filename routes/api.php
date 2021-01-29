@@ -36,3 +36,11 @@ Route::group(['prefix' => 'endereco'], function () {
     Route::put('', 'App\Http\Controllers\ControllerEndereco@update');
     Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
 });
+
+Route::group(['prefix' => 'motorista'], function () {
+    Route::get('', 'App\Http\Controllers\ControllerMotorista@index');
+    Route::get('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@show');
+    Route::post('', 'App\Http\Controllers\ControllerMotorista@store');
+    Route::put('', 'App\Http\Controllers\ControllerMotorista@update');
+    Route::delete('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update');
+});
