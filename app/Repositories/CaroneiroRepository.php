@@ -12,4 +12,8 @@ class CaroneiroRepository {
    public function show($id_caroneiro){
       return Caroneiro::find($id_caroneiro);
    }
+
+   public function update($dados, $id_caroneiro){
+      return Caroneiro::find($id_caroneiro);
+   }
 }

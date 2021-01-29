@@ -1,6 +1,8 @@
 CREATE TABLE caroneiro(
 	id_caroneiro INT PRIMARY KEY AUTO_INCREMENT,
-    nm_caroneiro VARCHAR(255)
+    nm_caroneiro VARCHAR(255),
+    update_at DATETIME,
+    created_at DATETIME
 );
 
 CREATE TABLE endereco(
@@ -8,7 +10,9 @@ CREATE TABLE endereco(
     nm_municipio VARCHAR(255),
     nm_uf VARCHAR(100),
     cd_longitude VARCHAR(50),
-    cd_latitude VARCHAR(50)
+    cd_latitude VARCHAR(50),
+    update_at DATETIME,
+    created_at DATETIME
 );
 
 CREATE TABLE status(
@@ -19,7 +23,9 @@ CREATE TABLE status(
 CREATE TABLE motorista(
     id_motorista INT PRIMARY KEY AUTO_INCREMENT,
     nm_motorista VARCHAR(100),
-    nm_carro VARCHAR(100)
+    nm_carro VARCHAR(100),
+    update_at DATETIME,
+    created_at DATETIME
 );
 
 CREATE TABLE carona_caroneiro(
@@ -28,6 +34,8 @@ CREATE TABLE carona_caroneiro(
     endereco_origem_id INT,
     endereco_destino_id INT,
     status_id INT,
+    update_at DATETIME,
+    created_at DATETIME,
 
     FOREIGN KEY (caroneiro_id) REFERENCES caroneiro(id_caroneiro),
     FOREIGN KEY (endereco_origem_id) REFERENCES endereco(id_endereco),
@@ -44,6 +52,8 @@ CREATE TABLE carona_motorista(
     status_id INT,
     qtd_max_passageiro INT,
     raio DECIMAL(10,2),
+    update_at DATETIME,
+    created_at DATETIME,
 
     FOREIGN KEY (motorista_id) REFERENCES motorista(id_motorista),
     FOREIGN KEY (endereco_origem_id) REFERENCES endereco(id_endereco),
@@ -56,6 +66,8 @@ CREATE TABLE viagem(
     id_viagem INT PRIMARY KEY AUTO_INCREMENT,
     caroneiro_id INT,
     carona_motorista_id INT,
+    update_at DATETIME,
+    created_at DATETIME,
 
     FOREIGN KEY (caroneiro_id) REFERENCES caroneiro(id_caroneiro),
     FOREIGN KEY (carona_motorista_id) REFERENCES carona_motorista(id_carona_motorista)

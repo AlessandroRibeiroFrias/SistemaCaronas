@@ -12,4 +12,10 @@ class EnderecoRepository {
     public function show($id_endereco){
        return Endereco::find($id_endereco);
     }
+
+    public function update($dados, $id_endereco){
+        $endereco = Endereco::find($id_endereco);
+
+        
+    }
 }
