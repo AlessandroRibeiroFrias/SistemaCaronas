@@ -106,6 +106,14 @@ class CaronaMotoristaRepository {
                         ->groupby('v.carona_motorista_id')
                         ->havingRaw('COUNT(v.caroneiro_id) >= cm.qtd_max_passageiro');
             })
+            ->whereNotExists(function ($query) {
+               $query->select(
+                           DB::raw(1)
+                       )
+                       ->from('viagem as v')
+                       ->whereColumn('v.carona_motorista_id', 'cm.id_carona_motorista')
+                       ->whereColumn('v.status_id', '<>', 4);
+           })
             ->get();
 
         return $retorno;

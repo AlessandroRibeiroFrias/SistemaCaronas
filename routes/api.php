@@ -28,6 +28,7 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::put('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@update');
     Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@destroy');
     Route::get('/carona/{id_carona_caroneiro}', 'App\Http\Controllers\ControllerCaronaCaroneiro@getCarona');
+    Route::get('/solicita/{id_carona_motorista}', 'App\Http\Controllers\ControllerMotoristaCaroneiro@requestCarona');
 });
 
 Route::group(['prefix' => 'endereco'], function () {
