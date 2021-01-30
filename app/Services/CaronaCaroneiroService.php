@@ -15,24 +15,32 @@ class CaronaCaroneiroService extends Service{
 		$caronaMotoristaRepository = new CaronaMotoristaRepository();
 		$motoristaLivre = $caronaMotoristaRepository->getMotoristaLivre($id_carona_caroneiro);
 		$caroneiro = $this->repository->getPosition($id_carona_caroneiro);
-		
+		$motoristaDisponiveis = [];
+
 		if($motoristaLivre && $caroneiro){
-			foreach ($motoristaLivre as $key => $motorista) {
-				return $motorista->cd_latitude_origem; 
-				$teste[] = $this->calculaDistancia($motorista, $caroneiro);
+			foreach ($motoristaLivre as $key => $motorista) { 
+				if($this->calculaDistancia($motorista, $caroneiro) <= $motorista->raio){
+					$motoristaDisponiveis[] = $motorista;
+				}
 			}
 		}
+
+		if(!$motoristaDisponiveis){
+			$this->repository->updateStatusCaroneiro($id_carona_caroneiro, 1);
+			$retorno = ['Ainda não existe motorista disponíveis próximos, aguarde!'];
+			return ResponseDefault::retorno($retorno, 200);
+		}
 		
-		return $teste;
+		return ResponseDefault::retorno($motoristaDisponiveis, 200);
 	}
 
 	public function calculaDistancia($motorista, $caroneiro)
 	{
-		$latitudeMotorista = $motorista->cd_latitude_origem;
-		$longitudeMotorista = $motorista->cd_longitude_origem;
+		$latitudeMotorista = str_replace(",",".",$motorista->cd_latitude_origem);
+		$longitudeMotorista = str_replace(",",".",$motorista->cd_longitude_origem);
 
-		$latitudeCaroneiro = $caroneiro->cd_latitude_origem;
-		$longitudeCaroneiro = $caroneiro->cd_longitude_origem;
+		$latitudeCaroneiro = str_replace(",",".",$caroneiro->cd_latitude_origem);
+		$longitudeCaroneiro = str_replace(",",".",$caroneiro->cd_longitude_origem);
 
 		$latitudeMotorista  = deg2rad((float) $latitudeMotorista);
 		$latitudeCaroneiro  = deg2rad((float) $latitudeCaroneiro);

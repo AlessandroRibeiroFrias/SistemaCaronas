@@ -66,7 +66,8 @@ class CaronaCaroneiroRepository {
        $this->caronaCaroneiro->caroneiro_id = $dados->caroneiro_id;
        $this->caronaCaroneiro->endereco_origem_id = $dados->endereco_origem_id;
        $this->caronaCaroneiro->endereco_destino_id = $dados->endereco_destino_id;
-       $this->caronaCaroneiro->status_id = $dados->status_id;
+       /* Cadastra a Carona do Caroneiro com Status Novo */
+       $this->caronaCaroneiro->status_id = 6;
        $this->caronaCaroneiro->save();
 
    }
@@ -92,5 +93,12 @@ class CaronaCaroneiroRepository {
             ->first();
 
         return $retorno;
+    }
+
+    public function updateStatusCaroneiro($id_carona_caroneiro, $status)
+    {
+        $caronaCaroneiro = CaronaCaroneiro::find($id_carona_caroneiro);
+        $caronaCaroneiro->status_id = $status;
+        $caronaCaroneiro->save();
     }
 }
