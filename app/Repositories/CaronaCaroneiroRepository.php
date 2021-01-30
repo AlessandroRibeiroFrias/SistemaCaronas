@@ -1,6 +1,7 @@
 <?php namespace App\Repositories;
 
 use App\Models\CaronaCaroneiro;
+use App\Models\Solicitacao;
 use Illuminate\Support\Facades\DB;
 
 class CaronaCaroneiroRepository {
@@ -95,10 +96,11 @@ class CaronaCaroneiroRepository {
         return $retorno;
     }
 
-    public function updateStatusCaroneiro($id_carona_caroneiro, $status)
-    {
+     public function updateStatusCaroneiro($id_carona_caroneiro, $status)
+     {
         $caronaCaroneiro = CaronaCaroneiro::find($id_carona_caroneiro);
         $caronaCaroneiro->status_id = $status;
         $caronaCaroneiro->save();
-    }
+     }
+
 }

@@ -18,7 +18,7 @@ class ControllerMotoristaCaroneiro extends Controller
 
 	public function requestCarona($id_carona_motorista)
 	{
-		$r = $this->service->requestCarona($id_carona_caroneiro);
+		$r = $this->service->requestCarona($id_carona_motorista);
 		return $r;
         return ResponseDefault::json($r);
 	}

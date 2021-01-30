@@ -2,6 +2,8 @@
 
 use App\Repositories\CaronaCaroneiroRepository;
 use App\Repositories\CaronaMotoristaRepository;
+use App\Repositories\SolicitacaoRepository;
+use Illuminate\Support\Facades\Validator;
 use App\Core\ResponseDefault;
 
 class CaronaCaroneiroService extends Service{
@@ -51,4 +53,28 @@ class CaronaCaroneiroService extends Service{
 		$dist = number_format($dist, 2, '.', '');
 		return $dist;
 	}
+
+	public function requestCarona($dados)
+    {
+		$solicitacao = new SolicitacaoRepository();
+
+		$validator = Validator::make($dados->all(), $solicitacao->getRules(), $solicitacao->getMessage());
+
+        if ($validator->fails()) 
+        {
+            return ResponseDefault::retorno($validator->messages(), 422);
+		}
+		
+		$solAndamento = $solicitacao->findByCaroneiroMotorista($dados);
+
+		if(count($solAndamento) > 0 ){
+			$retorno = ['Já existe uma solicitação de carona para esse endereço.'];
+			return ResponseDefault::retorno($retorno, 422);
+		}
+
+		$solicitacao->store($dados);
+
+		$retorno = ['Solicitação realizada com sucesso'];
+		return ResponseDefault::retorno($retorno, 200);
+    }
 }
