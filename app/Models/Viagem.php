@@ -11,4 +11,18 @@ class Viagem extends Model
 
     protected $primaryKey = 'id_viagem';
     protected $table = 'viagem';
+
+    public function getRules()
+    {
+
+        return $this->rules;
+
+    }
+
+    public function getMessage()
+    {
+
+        return $this->messages;
+        
+    }
 }

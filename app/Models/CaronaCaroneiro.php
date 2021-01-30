@@ -11,4 +11,18 @@ class CaronaCaroneiro extends Model
 
     protected $primaryKey = 'id_carona_caroneiro';
     protected $table = 'carona_caroneiro';
+
+    public function getRules()
+    {
+
+        return $this->rules;
+
+    }
+
+    public function getMessage()
+    {
+
+        return $this->messages;
+        
+    }
 }
