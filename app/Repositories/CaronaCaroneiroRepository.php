@@ -70,4 +70,27 @@ class CaronaCaroneiroRepository {
        $this->caronaCaroneiro->save();
 
    }
+
+    public function getPosition($id_carona_caroneiro)
+    {
+        $retorno = DB::table('carona_caroneiro as cc')
+            ->select(
+                'cc.id_carona_caroneiro',
+                'origem.nm_municipio as nm_municipio_origem',
+                'origem.nm_uf as nm_uf_origem',
+                'origem.cd_longitude as cd_longitude_origem',
+                'origem.cd_latitude as cd_latitude_origem',
+                'destino.nm_municipio as nm_municipio_destino',
+                'destino.nm_uf as nm_uf_destino',
+                'destino.cd_longitude as cd_longitude_destino',
+                'destino.cd_latitude as cd_latitude_destino'
+            )
+            ->join('endereco as origem', 'cc.endereco_origem_id', '=', 'origem.id_endereco')
+            ->join('endereco as destino', 'cc.endereco_destino_id', '=', 'destino.id_endereco')
+            ->where('cc.status_id', 1)
+            ->where('cc.id_carona_caroneiro', $id_carona_caroneiro)
+            ->first();
+
+        return $retorno;
+    }
 }

@@ -22,7 +22,9 @@ class CreateStatusTable extends Migration
         $dados = array(
             ['nm_status' => 'Em espera'],
             ['nm_status' => 'Concluido'],
-            ['nm_status' => 'Cancelado']
+            ['nm_status' => 'Cancelado'],
+            ['nm_status' => 'Disponivel'],
+            ['nm_status' => 'Lotado']
         );
 
         DB::table('status')->insert($dados);
