@@ -55,7 +55,7 @@ class Service{
 
         if ($validator->fails()) 
         {
-            return ResponseDefault::retorno([], 422);
+            return ResponseDefault::retorno($validator->messages(), 422);
         }
 
         $this->repository->update($dadosChange, $dados);
@@ -86,7 +86,7 @@ class Service{
         if ($validator->fails()) 
         {
 
-            return ResponseDefault::retorno([], 422);
+            return ResponseDefault::retorno($validator->messages(), 422);
 
         }
 

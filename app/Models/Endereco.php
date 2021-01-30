@@ -11,4 +11,18 @@ class Endereco extends Model
 
     protected $primaryKey = 'id_endereco';
     protected $table = 'endereco';
+
+    public function getRules()
+    {
+
+        return $this->rules;
+
+    }
+
+    public function getMessage()
+    {
+
+        return $this->messages;
+        
+    }
 }

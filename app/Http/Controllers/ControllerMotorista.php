@@ -8,7 +8,10 @@ use Response;
 
 class ControllerMotorista extends Controller
 {
-    public function __construct(MotoristaService $s) {
+	public function __construct(MotoristaService $s) 
+	{
+
 		parent::__construct($s);
+		
 	}
 }

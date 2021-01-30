@@ -22,12 +22,18 @@ class Motorista extends Model
 	    'nm_carro.required' => ' Nome do carro é obrigatório.'
     ];
     
-    public function getRules(){
+    public function getRules()
+    {
+
         return $this->rules;
+
     }
 
-    public function getMessage(){
+    public function getMessage()
+    {
+
         return $this->messages;
+        
     }
 
     

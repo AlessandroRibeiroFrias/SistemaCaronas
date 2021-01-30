@@ -10,39 +10,11 @@ use Illuminate\Support\Facades\Log;
 
 class ControllerEndereco extends Controller
 {
-    public function __construct(EnderecoService $s) {
-		parent::__construct($s);
-	}
-
-    public function getEndereco()
+    public function __construct(EnderecoService $s) 
     {
-        // return Endereco::all();
-        $r =  $this->service->getEndereco();
-        return Response::json($r);
-    }
 
-    public function create()
-    {
-        //
+        parent::__construct($s);
+        
     }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
-    }
+    
 }
