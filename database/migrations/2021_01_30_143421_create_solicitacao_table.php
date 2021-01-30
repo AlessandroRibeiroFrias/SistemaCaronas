@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViagemTable extends Migration
+class CreateSolicitacaoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateViagemTable extends Migration
      */
     public function up()
     {
-        Schema::create('viagem', function (Blueprint $table) {
-            $table->bigIncrements('id_viagem');
+        Schema::create('solicitacao', function (Blueprint $table) {
+            $table->bigIncrements('id_solicitacao');
 
-            $table->unsignedBigInteger('caroneiro_id')->unsigned();
-            $table->foreign('caroneiro_id')->references('id_caroneiro')->on('caroneiro');
+            $table->unsignedBigInteger('carona_caroneiro_id')->unsigned();
+            $table->foreign('carona_caroneiro_id')->references('id_carona_caroneiro')->on('carona_caroneiro');
 
             $table->unsignedBigInteger('carona_motorista_id')->unsigned();
             $table->foreign('carona_motorista_id')->references('id_carona_motorista')->on('carona_motorista');
@@ -28,13 +28,6 @@ class CreateViagemTable extends Migration
             $table->timestamps();
         });
 
-        $dados = array(
-            ['caroneiro_id' => 1, 'carona_motorista_id' => 1, 'status_id' => 4],
-            ['caroneiro_id' => 2, 'carona_motorista_id' => 1, 'status_id' => 4]
-        );
-
-        DB::table('viagem')->insert($dados);
-
     }
 
     /**
@@ -44,6 +37,6 @@ class CreateViagemTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('viagem');
+        Schema::dropIfExists('solicitacao');
     }
 }

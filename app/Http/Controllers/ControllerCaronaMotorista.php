@@ -9,7 +9,17 @@ use Response;
 class ControllerMotoristaCaroneiro extends Controller
 {
     
-    public function __construct(CaronaMotoristaService $s) {
+	public function __construct(CaronaMotoristaService $s) 
+	{
+
 		parent::__construct($s);
+
+	}
+
+	public function requestCarona($id_carona_motorista)
+	{
+		$r = $this->service->requestCarona($id_carona_motorista);
+		return $r;
+        return ResponseDefault::json($r);
 	}
 }

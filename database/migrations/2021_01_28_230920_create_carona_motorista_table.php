@@ -33,6 +33,13 @@ class CreateCaronaMotoristaTable extends Migration
 
             $table->timestamps();
         });
+
+        $dados = array(
+            ['motorista_id' => 1, 'endereco_origem_id' => 2950, 'endereco_destino_id' => 2887, 'status_id' => 4, 'raio' => '30.00', 'qtd_max_passageiro' => 5],
+            ['motorista_id' => 2, 'endereco_origem_id' => 334, 'endereco_destino_id' => 2792, 'status_id' => 4, 'raio' => '30.00', 'qtd_max_passageiro' => 5],
+        );
+
+        DB::table('carona_motorista')->insert($dados);
     }
 
     /**

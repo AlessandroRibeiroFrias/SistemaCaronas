@@ -32,7 +32,7 @@ class CreateCaronaCaroneiroTable extends Migration
         });
 
         $dados = array(
-            ['caroneiro_id' => 1, 'endereco_origem_id' => 4932, 'endereco_destino_id' => 2792, 'status_id' => 1]
+            ['caroneiro_id' => 1, 'endereco_origem_id' => 4932, 'endereco_destino_id' => 2792, 'status_id' => 6]
         );
 
         DB::table('carona_caroneiro')->insert($dados);
