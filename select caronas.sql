@@ -103,3 +103,37 @@ WHERE
             v.carona_motorista_id = cm.id_carona_motorista
             AND v.status_id <> 4
     )
+
+
+SELECT
+    sol.id_solicitacao,
+    c.id_caroneiro,
+    c.nm_caroneiro,
+    origem.nm_uf as nm_uf_origem,
+    origem.nm_municipio as nm_municipio_origem,
+    destino.nm_uf as nm_uf_destino,
+    destino.nm_municipio as nm_municipio_destino
+FROM
+    solicitacao as sol
+INNER JOIN
+    carona_caroneiro as cc on sol.carona_caroneiro_id = cc.id_carona_caroneiro
+INNER JOIN
+    caroneiro as c on cc.caroneiro_id = c.id_caroneiro
+INNER JOIN
+    endereco as origem on cc.endereco_origem_id = origem.id_endereco
+INNER JOIN
+    endereco as destino on cc.endereco_destino_id = destino.id_endereco
+WHERE
+    sol.status_id = 6
+
+
+SELECT
+    *
+FROM
+    solicitacao as sol
+INNER JOIN
+    carona_caroneiro as cc on sol.carona_caroneiro_id = cc.id_carona_caroneiro
+WHERE
+    sol.id_solicitacao = 
+
+caroneiro_id | carona_motorista_id | status_id

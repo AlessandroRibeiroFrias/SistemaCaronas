@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\CaronaMotoristaService;
 use Response;
+use App\Core\ResponseDefault;
 
-class ControllerMotoristaCaroneiro extends Controller
+class ControllerCaronaMotorista extends Controller
 {
     
 	public function __construct(CaronaMotoristaService $s) 
@@ -16,10 +17,16 @@ class ControllerMotoristaCaroneiro extends Controller
 
 	}
 
-	public function requestCarona($id_carona_motorista)
+	public function getSolicitacao()
 	{
-		$r = $this->service->requestCarona($id_carona_motorista);
-		return $r;
+		$r = $this->service->getSolicitacao();
         return ResponseDefault::json($r);
+	}
+
+	public function requestValidacao(Request $request)
+	{
+		$r = $this->service->requestValidacao($request);
+		return $r;
+		return ResponseDefault::json($r);
 	}
 }
