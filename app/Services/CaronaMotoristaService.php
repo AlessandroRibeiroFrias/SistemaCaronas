@@ -50,7 +50,7 @@ class CaronaMotoristaService extends Service{
                 
                 break;
             case 0:
-                $status_id = 7;    
+                $status_id = 7;
                 break;
             
             default:
