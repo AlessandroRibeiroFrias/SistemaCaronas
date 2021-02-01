@@ -90,6 +90,7 @@ class CaronaMotoristaService extends Service{
             ];
 
             $viagemRepository->updateStatusViagem($viagem->carona_motorista_id, 5);
+            $this->repository->updateStatusCaronaMotorista($viagem->carona_motorista_id, 5);
 
             return $retorno;
         }
