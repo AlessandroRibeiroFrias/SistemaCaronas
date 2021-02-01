@@ -121,6 +121,6 @@ class SolicitacaoRepository {
 
         $solicitacaoChange->status_id = $status_id;
         $solicitacaoChange->save();
-
+ 
     }
 }
