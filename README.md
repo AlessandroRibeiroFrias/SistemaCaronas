@@ -96,7 +96,7 @@
 ##### Retorna solicitações de carona de acordo com o id do motorista.
 
 #### POST  `motorista/validacao`
-##### Aprova ou recusa uma solicitacao de carona.
+##### Aprova ou recusa uma solicitacao da carona.
 ```json
     {
         "id_solicitacao" : "Id da solicitação de carona",
