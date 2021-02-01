@@ -21,8 +21,11 @@ class CaronaCaroneiroService extends Service{
 
 		if($motoristaLivre && $caroneiro){
 			foreach ($motoristaLivre as $key => $motorista) { 
-				if($this->calculaDistancia($motorista, $caroneiro) <= $motorista->raio){
+				$distancia = $this->calculaDistancia($motorista, $caroneiro);
+				if($distancia <= $motorista->raio){
+					$motorista->distancia = $distancia;
 					$motoristaDisponiveis[] = $motorista;
+					
 				}
 			}
 		}
@@ -30,7 +33,7 @@ class CaronaCaroneiroService extends Service{
 		if(!$motoristaDisponiveis){
 			$this->repository->updateStatusCaroneiro($id_carona_caroneiro, 1);
 			$retorno = ['Ainda não existe motorista disponíveis próximos, aguarde!'];
-			return ResponseDefault::retorno($retorno, 200);
+			return ResponseDefault::retorno($retorno, 422);
 		}
 		
 		return ResponseDefault::retorno($motoristaDisponiveis, 200);

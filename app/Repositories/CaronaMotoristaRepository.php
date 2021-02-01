@@ -112,7 +112,7 @@ class CaronaMotoristaRepository {
                        )
                        ->from('viagem as v')
                        ->whereColumn('v.carona_motorista_id', 'cm.id_carona_motorista')
-                       ->whereColumn('v.status_id', '<>', 4);
+                       ->where('v.status_id', '<>', 4);
            })
             ->get();
 
