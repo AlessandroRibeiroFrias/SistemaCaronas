@@ -95,7 +95,7 @@ class SolicitacaoRepository {
         return $retorno;
     }
 
-    public function getCaroneiro()
+    public function getCaroneiro($id_motorista)
     {
         $retorno = DB::table('solicitacao as sol')
             ->select(
@@ -108,10 +108,12 @@ class SolicitacaoRepository {
                 'destino.nm_municipio as nm_municipio_destino'
             )
             ->join('carona_caroneiro as cc', 'sol.carona_caroneiro_id', '=', 'cc.id_carona_caroneiro')
+            ->join('carona_motorista as cm', 'sol.carona_motorista_id', '=', 'cm.id_carona_motorista')
             ->join('caroneiro as c', 'cc.caroneiro_id', '=', 'c.id_caroneiro')
             ->join('endereco as origem', 'cc.endereco_origem_id', '=', 'origem.id_endereco')
             ->join('endereco as destino', 'cc.endereco_destino_id', '=', 'destino.id_endereco')
             ->where('sol.status_id', 6)
+            ->where('cm.motorista_id', $id_motorista)
             ->get();
 
         return $retorno;
