@@ -161,3 +161,19 @@ FROM
     viagem as v
 WHERE
     v.carona_motorista_id = 1
+
+
+SELECT 
+    sol.id_solicitacao,
+    m.nm_motorista,
+    s.nm_status
+FROM
+    solicitacao as sol
+INNER JOIN
+    status as s on s.id_status = sol.status_id
+INNER JOIN
+    carona_motorista as cm on cm.id_carona_motorista = sol.carona_motorista_id
+INNER JOIN
+    motorista as m on m.id_motorista = cm.motorista_id
+WHERE
+    sol.id_solicitacao = 2

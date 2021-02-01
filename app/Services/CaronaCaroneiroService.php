@@ -14,6 +14,12 @@ class CaronaCaroneiroService extends Service{
 
 	public function getCarona($id_carona_caroneiro)
 	{
+		if(!$this->repository->show($id_carona_caroneiro))
+		{
+			$retorno = ['Código de carona do caroneiro inválido'];
+			return ResponseDefault::retorno($retorno, 404);
+		}
+
 		$caronaMotoristaRepository = new CaronaMotoristaRepository();
 		$motoristaLivre = $caronaMotoristaRepository->getMotoristaLivre($id_carona_caroneiro);
 		$caroneiro = $this->repository->getPosition($id_carona_caroneiro);
@@ -79,5 +85,19 @@ class CaronaCaroneiroService extends Service{
 
 		$retorno = ['Solicitação realizada com sucesso'];
 		return ResponseDefault::retorno($retorno, 200);
-    }
+	}
+	
+	public function getStatusCarona($id_solicitacao)
+	{
+		$solicitacao = new SolicitacaoRepository();
+		$retorno = $solicitacao->getStatusCarona($id_solicitacao);
+
+		if(count($retorno) <= 0 ){
+			$message = ['Solicitação não encontrada.'];
+			return ResponseDefault::retorno($message, 404);
+		}
+
+		return ResponseDefault::retorno($retorno, 200);
+
+	}
 }

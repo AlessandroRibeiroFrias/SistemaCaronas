@@ -143,4 +143,21 @@ class SolicitacaoRepository {
 
         return $retorno;
     }
+
+    public function getStatusCarona($id_solicitacao)
+    {
+        $retorno = DB::table('solicitacao as sol')
+            ->select(
+                'sol.id_solicitacao',
+                'm.nm_motorista',
+                's.nm_status'
+            )
+            ->join('status as s', 's.id_status', '=', 'sol.status_id')
+            ->join('carona_motorista as cm', 'sol.carona_motorista_id', '=', 'cm.id_carona_motorista')
+            ->join('motorista as m', 'm.id_motorista', '=', 'cm.motorista_id')
+            ->where('sol.id_solicitacao', $id_solicitacao)
+            ->get();
+
+        return $retorno;
+    }
 }
