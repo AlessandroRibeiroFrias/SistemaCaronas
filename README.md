@@ -12,7 +12,9 @@
 - Criar a base de dados `sistemacaronas`
 - Executar os comandos:
 - - `composer install`
-- - `php artisan migrate:fresh`
+- - Faça uma cópia do arquivo .env.example e renomeando-o para .env
+- - `php artisan key:generate`
+- - `php artisan migrate`
 - - `php artisan serve`
 
 ### Rotas
