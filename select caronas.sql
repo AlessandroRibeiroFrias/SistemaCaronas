@@ -137,3 +137,27 @@ WHERE
     sol.id_solicitacao = 
 
 caroneiro_id | carona_motorista_id | status_id
+
+SELECT
+    sol.id_solicitacao,
+    sol.carona_motorista_id,
+    sol.carona_caroneiro_id,
+    cc.caroneiro_id,
+    cm.motorista_id,
+    cm.qtd_max_passageiro
+FROM
+    solicitacao as sol
+INNER JOIN
+    carona_caroneiro as cc on sol.carona_caroneiro_id = cc.id_carona_caroneiro
+INNER JOIN  
+    carona_motorista as cm on cm.id_carona_motorista = sol.carona_motorista_id
+WHERE
+    sol.id_solicitacao = 1
+
+
+SELECT
+   COUNT(1) as qtd_viagem
+FROM
+    viagem as v
+WHERE
+    v.carona_motorista_id = 1

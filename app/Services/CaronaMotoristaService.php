@@ -47,7 +47,16 @@ class CaronaMotoristaService extends Service{
         switch ($dados->aprovacao) {
             case 1:
                 $status_id = 4;
-                
+               
+                $dadosSolicitacao = $solicitacao->getSolicitacao($dados->id_solicitacao);
+                $dadosSolicitacao->id_status = $status_id;
+
+                $retornoValidSaveViagem = $this->validSaveViagem($dadosSolicitacao);
+
+                if($retornoValidSaveViagem['valid'] == false){
+                    return ResponseDefault::retorno($retornoValidSaveViagem['message'], 422);
+                }
+
                 break;
             case 0:
                 $status_id = 7;    
@@ -63,6 +72,30 @@ class CaronaMotoristaService extends Service{
 
 		$retorno = ['Solicitação atualizada com sucesso'];
 		return ResponseDefault::retorno($retorno, 200);
+    }
+
+    public function validSaveViagem($dadosSolicitacao)
+    {
+        $viagemRepository = new ViagemRepository();
+        $viagem = $viagemRepository->getQuantidade($dadosSolicitacao);
+
+        $retorno = [
+            "valid" => true
+        ];
+
+        if($viagem->qtdCaroneiro >= $dadosSolicitacao->qtd_max_passageiro){
+            $retorno = [
+                "valid" => false,
+                "message" => "Limite máximo de passageiros atingido!"
+            ];
+
+            $viagemRepository->updateStatusViagem($viagem->carona_motorista_id, 5);
+
+            return $retorno;
+        }
+
+        $viagemRepository->store($dadosSolicitacao);
+        return $retorno;
     }
 
 }

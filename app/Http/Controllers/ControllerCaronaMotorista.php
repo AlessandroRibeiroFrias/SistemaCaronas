@@ -26,6 +26,7 @@ class ControllerCaronaMotorista extends Controller
 	public function requestValidacao(Request $request)
 	{
 		$r = $this->service->requestValidacao($request);
+		return $r;
 		return ResponseDefault::json($r);
 	}
 }
