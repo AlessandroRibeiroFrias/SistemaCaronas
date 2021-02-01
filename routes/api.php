@@ -39,6 +39,6 @@ Route::group(['prefix' => 'motorista'], function () {
     Route::post('', 'App\Http\Controllers\ControllerMotorista@store');
     Route::put('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@update')->where('id_motorista', '[0-9]+');
     Route::delete('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@destroy')->where('id_motorista', '[0-9]+');
-    Route::get('/solicitacao', 'App\Http\Controllers\ControllerCaronaMotorista@getSolicitacao');
+    Route::get('/solicitacao/{id_motorista}', 'App\Http\Controllers\ControllerCaronaMotorista@getSolicitacao')->where('id_motorista', '[0-9]+');
     Route::post('/validacao', 'App\Http\Controllers\ControllerCaronaMotorista@requestValidacao');
 });

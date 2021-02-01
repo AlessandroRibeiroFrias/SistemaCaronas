@@ -12,10 +12,10 @@ class CaronaMotoristaService extends Service{
 		parent::__construct($r);
     }
 
-    public function getSolicitacao()
+    public function getSolicitacao($id_motorista)
     {
         $solicitacao = new SolicitacaoRepository();
-        $retorno = $solicitacao->getCaroneiro();
+        $retorno = $solicitacao->getCaroneiro($id_motorista);
 
         if(count($retorno) <= 0 ){
 			$retorno = ['Não existe solicitações de carona pendente.'];

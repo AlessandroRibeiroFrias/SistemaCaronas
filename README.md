@@ -16,6 +16,7 @@
 - - `php artisan serve`
 
 ### Rotas
+#### Caroneiro
 #### GET  `caroneiro`
 ##### Retorna todos os caroneiros cadastrados.
 
@@ -63,6 +64,8 @@
 #### GET  `caroneiro/solicitacao/{id_solicitacao}`
 ##### Retorna status de solicitações de carona
 
+#### Motorista
+
 #### GET  `motorista`
 ##### Retorna todos os motoristaa cadastrados.
 
@@ -88,3 +91,14 @@
 
 #### DELETE  `motorista/{id_motorista}`
 ##### Deleta um motorista de acordo com o id.
+
+#### GET  `motorista/solicitacao/{id_motorista}`
+##### Retorna solicitações de carona de acordo com o id do motorista.
+
+#### POST  `motorista/validacao`
+##### Aprova ou recusa uma solicitacao de carona.
+```json
+    {
+        "id_solicitacao" : "Id da solicitação de carona",
+        "aprovacao" : "True or false",
+    }

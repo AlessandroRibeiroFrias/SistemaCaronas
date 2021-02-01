@@ -17,9 +17,9 @@ class ControllerCaronaMotorista extends Controller
 
 	}
 
-	public function getSolicitacao()
+	public function getSolicitacao($id_motorista)
 	{
-		$r = $this->service->getSolicitacao();
+		$r = $this->service->getSolicitacao($id_motorista);
         return ResponseDefault::json($r);
 	}
 
