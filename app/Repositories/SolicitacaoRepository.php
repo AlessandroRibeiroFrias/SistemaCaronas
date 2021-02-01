@@ -88,7 +88,7 @@ class SolicitacaoRepository {
         $retorno = DB::table('solicitacao as sol')
             ->select('sol.id_solicitacao')
             ->where('sol.carona_motorista_id', $dados->carona_motorista_id)
-            ->where('sol.carona_caroneiro_id', $dados->carona_motorista_id)
+            ->where('sol.carona_caroneiro_id', $dados->carona_caroneiro_id)
             ->where('sol.status_id', 6)
             ->get();
         
