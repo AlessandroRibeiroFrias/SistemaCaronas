@@ -85,7 +85,7 @@ class ViagemRepository
     public function updateStatusViagem($carona_motorista_id, $status_id)
     {
         Viagem::where('carona_motorista_id', $carona_motorista_id)
-            ->update(['status_id', $status_id]);
+            ->update(['status_id' => $status_id]);
 
     }
 }
