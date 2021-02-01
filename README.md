@@ -42,3 +42,13 @@
 
 #### GET  `caroneiro/carona/{id_caroneiro}`
 ##### Retorna caroneiro de acordo com o id.
+
+#### POST  `caroneiro/carona`
+##### Salva um novo destino e origem de carona.
+```json
+    {
+        "caroneiro_id" : 1,
+        "endereco_origem_id" : 4932 ,
+        "endereco_destino_id" : 2792,
+    }
+```

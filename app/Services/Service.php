@@ -92,7 +92,7 @@ class Service{
 
         $this->repository->store($dados);
 
-        return ResponseDefault::retorno([], 200);
+        return ResponseDefault::retorno(['Registro salvo com sucesso.'], 200);
 
     }
 
