@@ -2,9 +2,9 @@
 
 ### Descrição
 #### Esse projeto tem com intuito disponibilizar funcionamento de caronas, onde é realizado o cadastro do Caroneiro e qual cidade ele está e qual cidade ele deseja ir. 
-#### Para solicitar uma carona é necessário que tenha disponíveis motorista, em que o raio de distância entre o motorista e o caroneiro seja menor ou igual que foi cadastrado pelo motorista, para disponibilizar a carona.
+#### Para solicitar uma carona é necessário que tenha disponíveis um ou mais motoristas, em que o raio de distância entre o motorista e o caroneiro seja menor ou igual que foi cadastrado pelo motorista, para disponibilizar a carona.
 #### Esse cálculo de distância é realizado entre a longitude e latitude do motorista e caroneiro.
-#### Se existir motorista próximo ao caroneiro, o caroneiro pode realizar a solicitação de carona para o motorista e o mesmo pode aprovar ou recusar a solicitação. Caso seja recusado o caroneiro pode realizar uma nova solicitação, para outro motorista, caso for aceita, o caroneiro é adicionado na viagem do motorista. **
+#### Se existir motorista próximo ao caroneiro dentro do raio cadastrado, o caroneiro pode realizar a solicitação de carona para o motorista e o mesmo pode aprovar ou recusar a solicitação. Caso seja recusado o caroneiro pode realizar uma nova solicitação, para outro motorista, caso for aceita, o caroneiro é adicionado na viagem do motorista. **
 
 ### Instalação
 - Clonar o projeto
@@ -40,15 +40,51 @@
 #### DELETE  `caroneiro/{id_caroneiro}`
 ##### Deleta um caroneiro de acordo com o id.
 
-#### GET  `caroneiro/carona/{id_caroneiro}`
-##### Retorna caroneiro de acordo com o id.
-
 #### POST  `caroneiro/carona`
 ##### Salva um novo destino e origem de carona.
 ```json
     {
         "caroneiro_id" : 1,
-        "endereco_origem_id" : 4932 ,
-        "endereco_destino_id" : 2792,
+        "endereco_origem_id" : 4932,
+        "endereco_destino_id" : 2792
     }
 ```
+#### GET  `caroneiro/carona/{id_caroneiro}`
+##### Retorna motorista disponiveis para dar a carona.
+
+#### POST  `caroneiro/solicitacao`
+##### Salva uma nova solicitação de carona para determinado motorista.
+```json
+    {
+        "carona_caroneiro_id" : 1,
+        "carona_motorista_id" : 1 
+    }
+```
+#### GET  `caroneiro/solicitacao/{id_solicitacao}`
+##### Retorna status de solicitações de carona
+
+#### GET  `motorista`
+##### Retorna todos os motoristaa cadastrados.
+
+#### GET  `motorista/{id_motorista}`
+##### Retorna o motorista de acordo com o id.
+
+#### POST `motorista`
+##### Salva um novo motorista.
+```json
+    {
+        "nm_motorista" : "Nome do Motorista",
+        "nm_carro" : "Nome carro do Motorista",
+    }
+```
+#### PUT  `motorista/{id_motorista}`
+##### Atualiza um motorista de acordo com o id.
+```json
+    {
+        "nm_motorista" : "Novo nome do Motorista",
+        "nm_carro" : "Novo carro do Motorista",
+    }
+```
+
+#### DELETE  `motorista/{id_motorista}`
+##### Deleta um motorista de acordo com o id.
