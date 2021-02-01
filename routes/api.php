@@ -29,6 +29,7 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::delete('/{id_caroneiro}', 'App\Http\Controllers\ControllerCaroneiro@destroy')->where('id_caroneiro', '[0-9]+');
     Route::get('/carona/{id_carona_caroneiro}', 'App\Http\Controllers\ControllerCaronaCaroneiro@getCarona')->where('id_carona_caroneiro', '[0-9]+');
     Route::post('/solicitacao', 'App\Http\Controllers\ControllerCaronaCaroneiro@requestCarona');
+    Route::get('/validacao/{id_solicitacao}', 'App\Http\Controllers\ControllerCaronaCaroneiro@getStatusCarona');
 });
 
 Route::group(['prefix' => 'motorista'], function () {

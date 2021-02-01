@@ -79,5 +79,19 @@ class CaronaCaroneiroService extends Service{
 
 		$retorno = ['Solicitação realizada com sucesso'];
 		return ResponseDefault::retorno($retorno, 200);
-    }
+	}
+	
+	public function getStatusCarona($id_solicitacao)
+	{
+		$solicitacao = new SolicitacaoRepository();
+		$retorno = $solicitacao->getStatusCarona($id_solicitacao);
+
+		if(count($retorno) <= 0 ){
+			$message = ['Solicitação não encontrada.'];
+			return ResponseDefault::retorno($message, 404);
+		}
+
+		return ResponseDefault::retorno($retorno, 200);
+
+	}
 }

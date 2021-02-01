@@ -27,4 +27,10 @@ class ControllerCaronaCaroneiro extends Controller
         return ResponseDefault::json($r);
 	}
 
+	public function getStatusCarona($id_solicitacao)
+	{
+		$r = $this->service->getStatusCarona($id_solicitacao);
+        return ResponseDefault::json($r);
+	}
+
 }
