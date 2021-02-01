@@ -88,7 +88,7 @@ class SolicitacaoRepository {
         $retorno = DB::table('solicitacao as sol')
             ->select('sol.id_solicitacao')
             ->where('sol.carona_motorista_id', $dados->carona_motorista_id)
-            ->where('sol.carona_caroneiro_id', $dados->carona_motorista_id)
+            ->where('sol.carona_caroneiro_id', $dados->carona_caroneiro_id)
             ->where('sol.status_id', 6)
             ->get();
         
@@ -117,10 +117,30 @@ class SolicitacaoRepository {
         return $retorno;
     }
 
-    public function updateStatus($solicitacaoChange, $status_id){
+    public function updateStatus($solicitacaoChange, $status_id)
+    {
 
         $solicitacaoChange->status_id = $status_id;
         $solicitacaoChange->save();
+ 
+    }
 
+    public function getSolicitacao($id_solicitacao)
+    {
+        $retorno = DB::table('solicitacao as sol')
+            ->select(
+                'sol.id_solicitacao',
+                'sol.carona_motorista_id',
+                'sol.carona_caroneiro_id',
+                'cc.caroneiro_id',
+                'cm.motorista_id',
+                'cm.qtd_max_passageiro'
+            )
+            ->join('carona_caroneiro as cc', 'sol.carona_caroneiro_id', '=', 'cc.id_carona_caroneiro')
+            ->join('carona_motorista as cm', 'sol.carona_motorista_id', '=', 'cm.id_carona_motorista')
+            ->where('sol.id_solicitacao', $id_solicitacao)
+            ->first();
+
+        return $retorno;
     }
 }

@@ -31,14 +31,6 @@ Route::group(['prefix' => 'caroneiro'], function () {
     Route::post('/solicitacao', 'App\Http\Controllers\ControllerCaronaCaroneiro@requestCarona');
 });
 
-Route::group(['prefix' => 'endereco'], function () {
-    Route::get('', 'App\Http\Controllers\ControllerEndereco@index');
-    Route::get('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@show');
-    Route::post('', 'App\Http\Controllers\ControllerEndereco@store');
-    Route::put('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@update');
-    Route::delete('/{id_endereco}', 'App\Http\Controllers\ControllerEndereco@destroy');
-});
-
 Route::group(['prefix' => 'motorista'], function () {
     Route::get('', 'App\Http\Controllers\ControllerMotorista@index');
     Route::get('/{id_motorista}', 'App\Http\Controllers\ControllerMotorista@show')->where('id_motorista', '[0-9]+');
