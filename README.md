@@ -1,4 +1,4 @@
-##  Sistema de Caronas  para Eventos de Tecnologia.
+##  Sistema de Caronas.
 
 ### Descrição
 #### Esse projeto tem com intuito disponibilizar funcionamento de caronas, onde é realizado o cadastro do Caroneiro e qual cidade ele está e qual cidade ele deseja ir. 
